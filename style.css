@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e0e4ee;
+}
+
+.book {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+/* Covers */
+
+.cover ,
+.back-cover {
+    height: 300px;
+    width: 260px;
+    background: #353755;
+    border-radius: 2px 10px 10px 2px;
+    position: absolute;
+    box-shadow: 1px 1px 40px grey;
+    transform: rotateX(10deg);
+    transform-origin: center left;
+}
+.cover {
+    transition: transform 3s;
+    z-index: 1;
+}
+.book:hover .cover {
+    transform: rotateX(10deg) rotateY(-180deg);
+}
+.back-cover {
+    z-index: -3;
+}
+
+/* Pages */
+
+.page ,
+.last-page {
+    height: 280px;
+    width: 250px;
+    background: white;
+    position: absolute;
+    border-radius: 2px 5px 5px 2px;
+    transform: rotateX(10deg);
+    transform-origin: center left;
+    z-index: -1;
+}
+
+.book:hover .page {
+    transform: rotateX(10deg) rotateY(-180deg);
+    z-index: 2;
+}
+
+.last-page {
+    z-index: -2;
+}
+
+/* Page transitions */
+
+.page:nth-child(2) {
+    background: yellow;
+    transition-duration: 3s;
+}
+.page:nth-child(3) {
+    background: orange;
+    transition-duration: 2.6s;
+}
+.page:nth-child(4) {
+    background: red;
+    transition-duration: 2.2s;
+}
+.page:nth-child(5) {
+    background: purple;
+    transition-duration: 1.8s;
+}
+.page:nth-child(6) {
+    background: blue;
+    transition-duration: 1.4s;
+}
+
+.book:hover .page:nth-child(2){
+    transition-duration: 6s;
+}
+.book:hover .page:nth-child(3){
+    transition-duration: 5.6s;
+}
+.book:hover .page:nth-child(4){
+    transition-duration: 5.2s;
+}
+.book:hover .page:nth-child(5){
+    transition-duration: 4.8s;
+}
+.book:hover .page:nth-child(6){
+    transition-duration: 4.4s;
+}
