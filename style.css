@@ -47,6 +47,17 @@ body {
         z-index: 0;
     }
 }
+@-webkit-keyframes cover {
+    0% {
+        z-index: 10;
+    }
+    50% {
+        z-index: 0;
+    }
+    100% {
+        z-index: 0;
+    }
+}
 .back-cover {
     z-index: -3;
 }
@@ -90,6 +101,17 @@ body {
         z-index: 1;
     }
 }
+@-webkit-keyframes first {
+    0% {
+        z-index: 6;
+    }
+    50% {
+        z-index: 1;
+    }
+    100% {
+        z-index: 1;
+    }
+}
 /* Second page: */
 .page:nth-child(3) {
     background: orange;
@@ -100,6 +122,17 @@ body {
     transition: 3s 0.4s;
 }
 @keyframes second {
+    0% {
+        z-index: 5;
+    }
+    50% {
+        z-index: 2;
+    }
+    100% {
+        z-index: 2;
+    }
+}
+@-webkit-keyframes second {
     0% {
         z-index: 5;
     }
@@ -130,6 +163,17 @@ body {
         z-index: 3;
     }
 }
+@-webkit-keyframes third {
+    0% {
+        z-index: 4;
+    }
+    50% {
+        z-index: 3;
+    }
+    100% {
+        z-index: 3;
+    }
+}
 /* Fourth page: */
 .page:nth-child(5) {
     background: purple;
@@ -150,6 +194,17 @@ body {
         z-index: 4;
     }
 }
+@-webkit-keyframes fourth {
+    0% {
+        z-index: 3;
+    }
+    50% {
+        z-index: 4;
+    }
+    100% {
+        z-index: 4;
+    }
+}
 /* Fifth page: */
 .page:nth-child(6) {
     background: blue;
@@ -160,6 +215,17 @@ body {
     transition: 3s 1s;
 }
 @keyframes fifth {
+    0% {
+        z-index: 1;
+    }
+    50% {
+        z-index: 6;
+    }
+    100% {
+        z-index: 6;
+    }
+}
+@-webkit-keyframes fifth {
     0% {
         z-index: 1;
     }
