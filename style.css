@@ -69,6 +69,17 @@ body {
         z-index: 0;
     }
 }
+@-moz-keyframes cover {
+    0% {
+        z-index: 10;
+    }
+    50% {
+        z-index: 0;
+    }
+    100% {
+        z-index: 0;
+    }
+}
 .back-cover {
     z-index: -3;
 }
@@ -134,6 +145,17 @@ body {
         z-index: 1;
     }
 }
+@-moz-keyframes first {
+    0% {
+        z-index: 6;
+    }
+    50% {
+        z-index: 1;
+    }
+    100% {
+        z-index: 1;
+    }
+}
 /* Second page: */
 .page:nth-child(3) {
     background: orange;
@@ -166,6 +188,17 @@ body {
     }
 }
 @-o-keyframes second {
+    0% {
+        z-index: 5;
+    }
+    50% {
+        z-index: 2;
+    }
+    100% {
+        z-index: 2;
+    }
+}
+@-moz-keyframes second {
     0% {
         z-index: 5;
     }
@@ -218,6 +251,17 @@ body {
         z-index: 3;
     }
 }
+@-moz-keyframes third {
+    0% {
+        z-index: 4;
+    }
+    50% {
+        z-index: 3;
+    }
+    100% {
+        z-index: 3;
+    }
+}
 /* Fourth page: */
 .page:nth-child(5) {
     background: purple;
@@ -260,6 +304,17 @@ body {
         z-index: 4;
     }
 }
+@-moz-keyframes fourth {
+    0% {
+        z-index: 3;
+    }
+    50% {
+        z-index: 4;
+    }
+    100% {
+        z-index: 4;
+    }
+}
 /* Fifth page: */
 .page:nth-child(6) {
     background: blue;
@@ -292,6 +347,17 @@ body {
     }
 }
 @-o-keyframes fifth {
+    0% {
+        z-index: 1;
+    }
+    50% {
+        z-index: 6;
+    }
+    100% {
+        z-index: 6;
+    }
+}
+@-moz-keyframes fifth {
     0% {
         z-index: 1;
     }
