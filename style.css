@@ -1,674 +1,739 @@
 * {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
 }
 body {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #e0e4ee;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #e0e4ee;
 }
 .book {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    perspective: 1000px; /* 3D view of the book */
+	/* display: flex;
+	align-items: center; */
+	height: 300px;
+	width: 260px;
+	display: grid;
+	grid-template-areas: "stack";
+	/* place-content: center; */
+	cursor: pointer;
+	perspective: 1000px; /* 3D view of the book */
+	position: relative;
 }
-
-
+.book > * {
+	grid-area: stack;
+}
 /* Covers */
-.cover ,
+.cover,
 .back-cover {
-    height: 300px;
-    width: 260px;
-    background: #353755;
-    border-radius: 2px 10px 10px 2px;
-    position: absolute;
-    box-shadow: 1px 1px 40px grey;
-    transform: rotateX(10deg); /* rotate X to get a 3D view of the book */
-    transform-origin: center left; /* page flip to the left side of the y axis */
+	display: grid;
+	place-content: center;
+	/* height: 300px;
+	width: 260px; */
+	background: #353755;
+	color: white;
+	border-radius: 2px 10px 10px 2px;
+	/* position: absolute; */
+	box-shadow: 1px 1px 40px grey;
+	transform: rotateX(10deg); /* rotate X to get a 3D view of the book */
+	transform-origin: center left; /* page flip to the left side of the y axis */
 }
 .cover {
-    transition: transform 6s; /* time taken to close page */
-    z-index: 10; /* making sure cover is on top of everything */
-    animation: closeCover 1ms 1.8s both;
+	transition: transform 6s; /* time taken to close page */
+	/* z-index: 10; making sure cover is on top of everything */
+	/* animation: closeCover 1ms 1.8s both; */
 }
-@keyframes closeCover {
-    0% {
-        z-index: 0;
-    }
-    50% {
-        z-index: 0;
-    }
-    100% {
-        z-index: 10;
-    }
+/* @keyframes closeCover {
+	0% {
+		z-index: 0;
+	}
+	50% {
+		z-index: 0;
+	}
+	100% {
+		z-index: 10;
+	}
 }
 @-webkit-keyframes closeCover {
-    0% {
-        z-index: 0;
-    }
-    50% {
-        z-index: 0;
-    }
-    100% {
-        z-index: 10;
-    }
+	0% {
+		z-index: 0;
+	}
+	50% {
+		z-index: 0;
+	}
+	100% {
+		z-index: 10;
+	}
 }
 @-moz-keyframes closeCover {
-    0% {
-        z-index: 0;
-    }
-    50% {
-        z-index: 0;
-    }
-    100% {
-        z-index: 10;
-    }
+	0% {
+		z-index: 0;
+	}
+	50% {
+		z-index: 0;
+	}
+	100% {
+		z-index: 10;
+	}
 }
 @-o-keyframes closeCover {
-    0% {
-        z-index: 0;
-    }
-    50% {
-        z-index: 0;
-    }
-    100% {
-        z-index: 10;
-    }
-}
-.book:hover .cover {
-    transform: rotateX(10deg) rotateY(-180deg); /* open page */
-    transition: transform 6s; /* time taken to open page */
-    animation: openCover 1ms 1.8s both; /* change the z-index in the middle
+	0% {
+		z-index: 0;
+	}
+	50% {
+		z-index: 0;
+	}
+	100% {
+		z-index: 10;
+	}
+} */
+.book.open .cover {
+	transform: rotateX(10deg) rotateY(-180deg); /* open page */
+	transition: transform 6s; /* time taken to open page */
+	/* animation: openCover 1ms 1.8s both; /* change the z-index in the middle 
      of the flip transition, to make the cover fall underneath the pages */
 }
 
-
 /* animation for cover */
-@keyframes openCover {
-    0% {
-        z-index: 10;
-    }
-    50% {
-        z-index: 0;
-    }
-    100% {
-        z-index: 0;
-    }
+/* @keyframes openCover {
+	0% {
+		z-index: 10;
+	}
+	50% {
+		z-index: 0;
+	}
+	100% {
+		z-index: 0;
+	}
 }
 @-webkit-keyframes openCover {
-    0% {
-        z-index: 10;
-    }
-    50% {
-        z-index: 0;
-    }
-    100% {
-        z-index: 0;
-    }
+	0% {
+		z-index: 10;
+	}
+	50% {
+		z-index: 0;
+	}
+	100% {
+		z-index: 0;
+	}
 }
 @-moz-keyframes openCover {
-    0% {
-        z-index: 10;
-    }
-    50% {
-        z-index: 0;
-    }
-    100% {
-        z-index: 0;
-    }
+	0% {
+		z-index: 10;
+	}
+	50% {
+		z-index: 0;
+	}
+	100% {
+		z-index: 0;
+	}
 }
 @-o-keyframes openCover {
-    0% {
-        z-index: 10;
-    }
-    50% {
-        z-index: 10;
-    }
-    100% {
-        z-index: 0;
-    }
-}
-.back-cover {
-    z-index: -3; /* move the back cover behind everything else */
-}
-
+	0% {
+		z-index: 10;
+	}
+	50% {
+		z-index: 10;
+	}
+	100% {
+		z-index: 0;
+	}
+} */
+/* .back-cover {
+	z-index: -3; /* move the back cover behind everything else 
+} */
 
 /* Pages */
-.page ,
-.last-page {
-    height: 280px;
-    width: 250px;
-    background: white;
-    position: absolute;
-    border-radius: 2px 5px 5px 2px;
-    transform: rotateX(10deg); /* 3D view of the book */
-    transform-origin: center left; /* flip page to the left */
+.pages {
+	position: relative;
 }
-.book:hover .page {
-    transform: rotateX(10deg) rotateY(-180deg); /* flip page */
+.book .page {
+	/* height: 280px; */
+	/* width: 250px; */
+
+	height: 90%;
+	width: 90%;
+	top: 50%;
+	background: white;
+	position: absolute;
+	border-radius: 2px 5px 5px 2px;
+	/* animation-play-state: paused; */
+	/* transition: transform calc(6s - ((var(--count) - 1) * 0.4s)) ease-in-out var(--transition-delay); */
 }
-.last-page {
-    z-index: -1;
+.book.open .page.front {
+	--transition-delay: calc((var(--count)) * 600ms);
+
+	transform-origin: center left; /* flip page to the left */
+}
+.book.open .page.back {
+	--transition-delay: calc((var(--count) + 2) * 600ms * 2);
+	transform-origin: center left; /* flip page to the left */
+}
+.book.close .page.front {
+	--transition-delay: calc((var(--count)) * 600ms * 2);
+	transform-origin: center left; /* flip page to the left */
+}
+.book.close .page.back {
+	--transition-delay: calc((var(--count) + 2) * 600ms);
+	transform-origin: center left; /* flip page to the left */
+}
+.book.open .page.front {
+	/* animation: turnPage calc(6s - ((var(--count) - 1) * 0.4s)) ease-in-out calc(var(--count) * 400ms) 1 both; */
+	/* animation-play-state: running; */
+
+	transform: translateY(-50%) rotateX(10deg) rotateY(-90deg); /* flip page */
+	transition: transform 4s ease-in-out calc(var(--transition-delay));
+}
+.book.close .page.front {
+	transform: translateY(-50%) rotateX(10deg) rotateY(0deg); /* 3D view of the book */
+	/* animation: turnPage calc(6s - ((var(--count) - 1) * 0.4s)) ease-in-out calc(var(--count) * 400ms) 1 reverse both; */
+}
+.book.open .page.back {
+	/* animation: turnPage calc(6s - ((var(--count) - 1) * 0.4s)) ease-in-out calc(var(--count) * 400ms) 1 both; */
+	/* animation-play-state: running; */
+
+	transform: translateY(-50%) rotateX(10deg) rotateY(-180deg); /* flip page */
+	transition: transform 4s ease-in-out calc(var(--transition-delay));
+}
+.book.close .page.back {
+	transform: translateY(-50%) rotateX(10deg) rotateY(-90deg); /* 3D view of the book */
+	/* animation: turnPage calc(6s - ((var(--count) - 1) * 0.4s)) ease-in-out calc(var(--count) * 400ms) 1 reverse both; */
+}
+.back-cover {
+	z-index: -1000;
 }
 
+.page.front {
+	z-index: calc(var(--count) * -1);
+}
+.page.back {
+	z-index: calc(var(--count));
+}
+/* .last-page {
+    z-index: -1;
+} */
 
 /* Page transitions */
 
-
+/*  */
 /* First page: */
-.page:nth-child(2) {
-    z-index: 6;
-    background: yellow;
-    transition: transform 5.6s ; /* page close duration */
-    animation: closeFirstPage 1ms 1.5s both;
+.page.two {
+	/* z-index: 6; */
+	background: yellow;
+	/* transition: transform 5.6s; page close duration */
+	/* animation: closeFirstPage 1ms 1.5s both; */
+	/* animation-play-state: paused; */
 }
-/* first page close animation */
+/* first page close animation
 @keyframes closeFirstPage {
-    0% {
-        z-index: 1;
-    }
-    50% {
-        z-index: 1;
-    }
-    100% {
-        z-index: 6;
-    }
+	0% {
+		z-index: 1;
+	}
+	50% {
+		z-index: 1;
+	}
+	100% {
+		z-index: 6;
+	}
 }
 @-webkit-keyframes closeFirstPage {
-    0% {
-        z-index: 1;
-    }
-    50% {
-        z-index: 1;
-    }
-    100% {
-        z-index: 6;
-    }
+	0% {
+		z-index: 1;
+	}
+	50% {
+		z-index: 1;
+	}
+	100% {
+		z-index: 6;
+	}
 }
 @-moz-keyframes closeFirstPage {
-    0% {
-        z-index: 1;
-    }
-    50% {
-        z-index: 1;
-    }
-    100% {
-        z-index: 6;
-    }
+	0% {
+		z-index: 1;
+	}
+	50% {
+		z-index: 1;
+	}
+	100% {
+		z-index: 6;
+	}
 }
 @-o-keyframes closeFirstPage {
-    0% {
-        z-index: 1;
-    }
-    50% {
-        z-index: 1;
-    }
-    100% {
-        z-index: 6;
-    }
-}
-.book:hover .page:nth-child(2){
-    transition: transform 6s 0.2s; /* page open duration */
-    animation: openFirstPage 1ms 2s both; /* change z-index in the middle of flip transition */
-}
+	0% {
+		z-index: 1;
+	}
+	50% {
+		z-index: 1;
+	}
+	100% {
+		z-index: 6;
+	}
+} */
+/* .book:hover .page:nth-child(2) {
+	/* transition: transform 6s 0.2s; page open duration */
+/* animation: openFirstPage 1ms 2s both; */
+/* animation-play-state: paused; */
+/* change z-index in the middle of flip transition */
+/* } */
 /* first page open animation */
-@keyframes openFirstPage {
-    0% {
-        z-index: 6;
-    }
-    50% {
-        z-index: 1;
-    }
-    100% {
-        z-index: 1;
-    }
+/* @keyframes openFirstPage {
+	0% {
+		z-index: 6;
+	}
+	50% {
+		z-index: 1;
+	}
+	100% {
+		z-index: 1;
+	}
 }
 @-webkit-keyframes openFirstPage {
-    0% {
-        z-index: 6;
-    }
-    50% {
-        z-index: 6;
-    }
-    100% {
-        z-index: 1;
-    }
+	0% {
+		z-index: 6;
+	}
+	50% {
+		z-index: 6;
+	}
+	100% {
+		z-index: 1;
+	}
 }
 @-o-keyframes openFirstPage {
-    0% {
-        z-index: 6;
-    }
-    50% {
-        z-index: 6;
-    }
-    100% {
-        z-index: 1;
-    }
+	0% {
+		z-index: 6;
+	}
+	50% {
+		z-index: 6;
+	}
+	100% {
+		z-index: 1;
+	}
 }
 @-moz-keyframes openFirstPage {
-    0% {
-        z-index: 6;
-    }
-    50% {
-        z-index: 6;
-    }
-    100% {
-        z-index: 1;
-    }
-}
-
+	0% {
+		z-index: 6;
+	}
+	50% {
+		z-index: 6;
+	}
+	100% {
+		z-index: 1;
+	}
+} */
 
 /* Second page: */
-.page:nth-child(3) {
-    z-index: 5;
-    background: orange;
-    transition: transform 5.2s; /* page close duration */
-    animation: closeSecondPage 1ms 1.4s both;
+.page.three {
+	/* z-index: 5; */
+	background: orange;
+	/* transition: transform 5.2s; page close duration */
+	/* animation: closeSecondPage 1ms 1.4s both; */
+	/* animation-play-state: paused; */
 }
 /* close animation */
-@keyframes closeSecondPage {
-    0% {
-        z-index: 2;
-    }
-    50% {
-        z-index: 2;
-    }
-    100% {
-        z-index: 5;
-    }
+/* @keyframes closeSecondPage {
+	0% {
+		z-index: 2;
+	}
+	50% {
+		z-index: 2;
+	}
+	100% {
+		z-index: 5;
+	}
 }
 @-webkit-keyframes closeSecondPage {
-    0% {
-        z-index: 2;
-    }
-    50% {
-        z-index: 2;
-    }
-    100% {
-        z-index: 5;
-    }
+	0% {
+		z-index: 2;
+	}
+	50% {
+		z-index: 2;
+	}
+	100% {
+		z-index: 5;
+	}
 }
 @-moz-keyframes closeSecondPage {
-    0% {
-        z-index: 2;
-    }
-    50% {
-        z-index: 2;
-    }
-    100% {
-        z-index: 5;
-    }
+	0% {
+		z-index: 2;
+	}
+	50% {
+		z-index: 2;
+	}
+	100% {
+		z-index: 5;
+	}
 }
 @-o-keyframes closeSecondPage {
-    0% {
-        z-index: 2;
-    }
-    50% {
-        z-index: 2;
-    }
-    100% {
-        z-index: 5;
-    }
-}
-.book:hover .page:nth-child(3){
-    transition: transform 6s 0.4s; /* page open duration */
-    animation: openSecondPage 1ms 2.2s both; /* change z-index in the middle of flip transition */
-}
+	0% {
+		z-index: 2;
+	}
+	50% {
+		z-index: 2;
+	}
+	100% {
+		z-index: 5;
+	}
+} */
+/* .book:hover .page:nth-child(3) {
+	/* transition: transform 6s 0.4s; page open duration */
+/* animation: openSecondPage 1ms 2.2s both; */
+/* animation-play-state: paused; */
+/* change z-index in the middle of flip transition */
+/* } */
 /* open animation */
-@keyframes openSecondPage {
-    0% {
-        z-index: 5;
-    }
-    50% {
-        z-index: 2;
-    }
-    100% {
-        z-index: 2;
-    }
+/* @keyframes openSecondPage {
+	0% {
+		z-index: 5;
+	}
+	50% {
+		z-index: 2;
+	}
+	100% {
+		z-index: 2;
+	}
 }
 @-webkit-keyframes openSecondPage {
-    0% {
-        z-index: 5;
-    }
-    50% {
-        z-index: 2;
-    }
-    100% {
-        z-index: 2;
-    }
+	0% {
+		z-index: 5;
+	}
+	50% {
+		z-index: 2;
+	}
+	100% {
+		z-index: 2;
+	}
 }
 @-o-keyframes openSecondPage {
-    0% {
-        z-index: 5;
-    }
-    50% {
-        z-index: 2;
-    }
-    100% {
-        z-index: 2;
-    }
+	0% {
+		z-index: 5;
+	}
+	50% {
+		z-index: 2;
+	}
+	100% {
+		z-index: 2;
+	}
 }
 @-moz-keyframes openSecondPage {
-    0% {
-        z-index: 5;
-    }
-    50% {
-        z-index: 2;
-    }
-    100% {
-        z-index: 2;
-    }
-}
-
+	0% {
+		z-index: 5;
+	}
+	50% {
+		z-index: 2;
+	}
+	100% {
+		z-index: 2;
+	}
+} */
 
 /* Third page: */
-.page:nth-child(4) {
-    z-index: 4;
-    background: red;
-    transition: transform 4.8s; /* page close duration */
-    animation: closeThirdPage 1ms 1.3s both ;
+.page.four {
+	/* z-index: 4; */
+	background: red;
+	/* transition: transform 4.8s; page close duration */
+	/* animation: closeThirdPage 1ms 1.3s both;
+	animation-play-state: paused; */
 }
 /* close animation */
-@keyframes closeThirdPage {
-    0% {
-        z-index: 3;
-    }
-    50% {
-        z-index: 3;
-    }
-    100% {
-        z-index: 4;
-    }
+/* @keyframes closeThirdPage {
+	0% {
+		z-index: 3;
+	}
+	50% {
+		z-index: 3;
+	}
+	100% {
+		z-index: 4;
+	}
 }
 @-webkit-keyframes closeThirdPage {
-    0% {
-        z-index: 3;
-    }
-    50% {
-        z-index: 3;
-    }
-    100% {
-        z-index: 4;
-    }
+	0% {
+		z-index: 3;
+	}
+	50% {
+		z-index: 3;
+	}
+	100% {
+		z-index: 4;
+	}
 }
 @-moz-keyframes closeThirdPage {
-    0% {
-        z-index: 3;
-    }
-    50% {
-        z-index: 3;
-    }
-    100% {
-        z-index: 4;
-    }
+	0% {
+		z-index: 3;
+	}
+	50% {
+		z-index: 3;
+	}
+	100% {
+		z-index: 4;
+	}
 }
 @-o-keyframes closeThirdPage {
-    0% {
-        z-index: 3;
-    }
-    50% {
-        z-index: 3;
-    }
-    100% {
-        z-index: 4;
-    }
-}
-.book:hover .page:nth-child(4){
-    transition: transform 6s 0.6s; /* page open duration */
-    animation: openThirdPage 1ms 2.4s both; /* change z-index in the middle of flip transition */
-}
+	0% {
+		z-index: 3;
+	}
+	50% {
+		z-index: 3;
+	}
+	100% {
+		z-index: 4;
+	}
+} */
+/* .book:hover .page:nth-child(4) {
+	/* transition: transform 6s 0.6s; page open duration */
+/* animation: openThirdPage 1ms 2.4s both; */
+/* animation-play-state: paused; */
+/* change z-index in the middle of flip transition */
+/* } */
 /* open animation */
-@keyframes openThirdPage {
-    0% {
-        z-index: 4;
-    }
-    50% {
-        z-index: 3;
-    }
-    100% {
-        z-index: 3;
-    }
+/* @keyframes openThirdPage {
+	0% {
+		z-index: 4;
+	}
+	50% {
+		z-index: 3;
+	}
+	100% {
+		z-index: 3;
+	}
 }
 @-webkit-keyframes openThirdPage {
-    0% {
-        z-index: 4;
-    }
-    50% {
-        z-index: 3;
-    }
-    100% {
-        z-index: 3;
-    }
+	0% {
+		z-index: 4;
+	}
+	50% {
+		z-index: 3;
+	}
+	100% {
+		z-index: 3;
+	}
 }
 @-o-keyframes openThirdPage {
-    0% {
-        z-index: 4;
-    }
-    50% {
-        z-index: 3;
-    }
-    100% {
-        z-index: 3;
-    }
+	0% {
+		z-index: 4;
+	}
+	50% {
+		z-index: 3;
+	}
+	100% {
+		z-index: 3;
+	}
 }
 @-moz-keyframes openThirdPage {
-    0% {
-        z-index: 4;
-    }
-    50% {
-        z-index: 3;
-    }
-    100% {
-        z-index: 3;
-    }
-}
-
+	0% {
+		z-index: 4;
+	}
+	50% {
+		z-index: 3;
+	}
+	100% {
+		z-index: 3;
+	}
+} */
 
 /* Fourth page: */
-.page:nth-child(5) {
-    z-index: 3;
-    background: purple;
-    transition:transform 4.4s; /* page close duration */
-    animation: closeFourthPage 1ms 1.2s both;
+.page.five {
+	/* z-index: 3; */
+	background: purple;
+	/* transition: transform 4.4s; page close duration */
+	/* animation: closeFourthPage 1ms 1.2s both; */
+	/* animation-play-state: paused; */
 }
 /* close animation */
-@keyframes closeFourthPage {
-    0% {
-        z-index: 4;
-    }
-    50% {
-        z-index: 4;
-    }
-    100% {
-        z-index: 3;
-    }
+/* @keyframes closeFourthPage {
+	0% {
+		z-index: 4;
+	}
+	50% {
+		z-index: 4;
+	}
+	100% {
+		z-index: 3;
+	}
 }
 @-webkit-keyframes closeFourthPage {
-    0% {
-        z-index: 4;
-    }
-    50% {
-        z-index: 4;
-    }
-    100% {
-        z-index: 3;
-    }
+	0% {
+		z-index: 4;
+	}
+	50% {
+		z-index: 4;
+	}
+	100% {
+		z-index: 3;
+	}
 }
 @-moz-keyframes closeFourthPage {
-    0% {
-        z-index: 4;
-    }
-    50% {
-        z-index: 4;
-    }
-    100% {
-        z-index: 3;
-    }
+	0% {
+		z-index: 4;
+	}
+	50% {
+		z-index: 4;
+	}
+	100% {
+		z-index: 3;
+	}
 }
 @-o-keyframes closeFourthPage {
-    0% {
-        z-index: 4;
-    }
-    50% {
-        z-index: 4;
-    }
-    100% {
-        z-index: 3;
-    }
-}
-.book:hover .page:nth-child(5){
-    transition: transform 6s 0.8s; /* page open duration */
-    animation: openFourthPage 1ms 2.6s both; /* change z-index in the middle of flip transition */
-}
+	0% {
+		z-index: 4;
+	}
+	50% {
+		z-index: 4;
+	}
+	100% {
+		z-index: 3;
+	}
+} */
+/* .book:hover .page:nth-child(5) {
+	/* transition: transform 6s 0.8s; page open duration */
+/* animation: openFourthPage 1ms 2.6s both; change z-index in the middle of flip transition */
+/* } */
 /* open animation */
-@keyframes openFourthPage {
-    0% {
-        z-index: 3;
-    }
-    50% {
-        z-index: 4;
-    }
-    100% {
-        z-index: 4;
-    }
+/* @keyframes openFourthPage {
+	0% {
+		z-index: 3;
+	}
+	50% {
+		z-index: 4;
+	}
+	100% {
+		z-index: 4;
+	}
 }
 @-webkit-keyframes openFourthPage {
-    0% {
-        z-index: 3;
-    }
-    50% {
-        z-index: 4;
-    }
-    100% {
-        z-index: 4;
-    }
+	0% {
+		z-index: 3;
+	}
+	50% {
+		z-index: 4;
+	}
+	100% {
+		z-index: 4;
+	}
 }
 @-o-keyframes openFourthPage {
-    0% {
-        z-index: 3;
-    }
-    50% {
-        z-index: 4;
-    }
-    100% {
-        z-index: 4;
-    }
+	0% {
+		z-index: 3;
+	}
+	50% {
+		z-index: 4;
+	}
+	100% {
+		z-index: 4;
+	}
 }
 @-moz-keyframes openFourthPage {
-    0% {
-        z-index: 3;
-    }
-    50% {
-        z-index: 4;
-    }
-    100% {
-        z-index: 4;
-    }
-}
-
+	0% {
+		z-index: 3;
+	}
+	50% {
+		z-index: 4;
+	}
+	100% {
+		z-index: 4;
+	}
+} */
 
 /* Fifth page: */
-.page:nth-child(6) {
-    z-index: 2;
-    background: blue;
-    transition: transform 4s; /* page close duration */
-    animation: closeFifthPage 1ms 1.1s both;
+.page.last-page {
+	/* z-index: 2; */
+	background: blue;
+	/* transition: transform 4s; page close duration */
+	/* animation: closeFifthPage 1ms 1.1s both; */
 }
 /* close animation */
-@keyframes closeFifthPage {
-    0% {
-        z-index: 5;
-    }
-    50% {
-        z-index: 5;
-    }
-    100% {
-        z-index: 2;
-    }
+/* @keyframes closeFifthPage {
+	0% {
+		z-index: 5;
+	}
+	50% {
+		z-index: 5;
+	}
+	100% {
+		z-index: 2;
+	}
 }
 @-webkit-keyframes closeFifthPage {
-    0% {
-        z-index: 5;
-    }
-    50% {
-        z-index: 5;
-    }
-    100% {
-        z-index: 2;
-    }
+	0% {
+		z-index: 5;
+	}
+	50% {
+		z-index: 5;
+	}
+	100% {
+		z-index: 2;
+	}
 }
 @-moz-keyframes closeFifthPage {
-    0% {
-        z-index: 5;
-    }
-    50% {
-        z-index: 5;
-    }
-    100% {
-        z-index: 2;
-    }
+	0% {
+		z-index: 5;
+	}
+	50% {
+		z-index: 5;
+	}
+	100% {
+		z-index: 2;
+	}
 }
 @-o-keyframes closeFifthPage {
-    0% {
-        z-index: 5;
-    }
-    50% {
-        z-index: 5;
-    }
-    100% {
-        z-index: 2;
-    }
-}
-.book:hover .page:nth-child(6){
-    transition: transform 6s 1s; /* page open duration */
-    animation: openFifthPage 1ms 2.8s both; /* change z-index in the middle of flip transition */
-}
+	0% {
+		z-index: 5;
+	}
+	50% {
+		z-index: 5;
+	}
+	100% {
+		z-index: 2;
+	}
+} */
+/* .book:hover .page:nth-child(6) {
+	/* transition: transform 6s 1s; page open duration */
+/* animation: openFifthPage 1ms 2.8s both; change z-index in the middle of flip transition */
+/* } */
 /* open animation */
-@keyframes openFifthPage {
-    0% {
-        z-index: 1;
-    }
-    50% {
-        z-index: 6;
-    }
-    100% {
-        z-index: 6;
-    }
+/* @keyframes openFifthPage {
+	0% {
+		z-index: 1;
+	}
+	50% {
+		z-index: 6;
+	}
+	100% {
+		z-index: 6;
+	}
 }
 @-webkit-keyframes openFifthPage {
-    0% {
-        z-index: 1;
-    }
-    50% {
-        z-index: 6;
-    }
-    100% {
-        z-index: 6;
-    }
+	0% {
+		z-index: 1;
+	}
+	50% {
+		z-index: 6;
+	}
+	100% {
+		z-index: 6;
+	}
 }
 @-o-keyframes openFifthPage {
-    0% {
-        z-index: 1;
-    }
-    50% {
-        z-index: 6;
-    }
-    100% {
-        z-index: 6;
-    }
+	0% {
+		z-index: 1;
+	}
+	50% {
+		z-index: 6;
+	}
+	100% {
+		z-index: 6;
+	}
 }
 @-moz-keyframes openFifthPage {
-    0% {
-        z-index: 1;
-    }
-    50% {
-        z-index: 6;
-    }
-    100% {
-        z-index: 6;
-    }
-}
+	0% {
+		z-index: 1;
+	}
+	50% {
+		z-index: 6;
+	}
+	100% {
+		z-index: 6;
+	}
+} */

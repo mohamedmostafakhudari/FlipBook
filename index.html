@@ -1,23 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlipBook</title>
-    <link rel="stylesheet" href="./style.css"/>
-    <script src="./script.js" defer></script>
-</head>
-<body>
-    <div class="book">
-        <div class="cover"></div>
-        <div class="page one"></div>
-        <div class="page two"></div>
-        <div class="page three"></div>
-        <div class="page four"></div>
-        <div class="page five"></div>
-        <div class="last-page"></div>
-        <div class="back-cover"></div>
-    </div>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>FlipBook</title>
+		<link
+			rel="stylesheet"
+			href="./style.css"
+		/>
+		<script
+			src="./script.js"
+			defer
+		></script>
+	</head>
+	<body>
+		<div class="book close">
+			<div
+				class="cover"
+				style="--count: 0"
+			>
+				Book Cover
+			</div>
+			<div class="pages">
+				<div
+					class="page one front"
+					data-count="1"
+					style="--count: 1"
+				></div>
+				<div
+					class="page one back"
+					data-count="1"
+					style="--count: 1"
+				></div>
+				<div
+					class="page two front"
+					data-count="2"
+					style="--count: 2"
+				></div>
+				<div
+					class="page two back"
+					data-count="2"
+					style="--count: 2"
+				></div>
+				<div
+					class="page three front"
+					data-count="3"
+					style="--count: 3"
+				></div>
+				<div
+					class="page three back"
+					data-count="3"
+					style="--count: 3"
+				></div>
+				<div
+					class="page four front"
+					data-count="4"
+					style="--count: 4"
+				></div>
+				<div
+					class="page four back"
+					data-count="4"
+					style="--count: 4"
+				></div>
+				<div
+					class="page five front"
+					data-count="5"
+					style="--count: 5"
+				></div>
+				<div
+					class="page five back"
+					data-count="5"
+					style="--count: 5"
+				></div>
+				<div
+					class="page last-page front"
+					data-count="6"
+					style="--count: 6"
+				></div>
+				<div
+					class="page last-page back"
+					data-count="6"
+					style="--count: 6"
+				></div>
+			</div>
+			<div
+				class="back-cover"
+				style="--count: 7"
+			>
+				Book Back Cover
+			</div>
+		</div>
+		<script src="script.js"></script>
+	</body>
 </html>
