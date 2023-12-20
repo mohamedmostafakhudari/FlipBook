@@ -17,8 +17,8 @@ body {
     perspective: 1000px; /* 3D view of the book */
 }
 
-/* Covers */
 
+/* Covers */
 .cover ,
 .back-cover {
     height: 300px;
@@ -31,16 +31,64 @@ body {
     transform-origin: center left; /* page flip to the left side of the y axis */
 }
 .cover {
-    transition: transform 3s; /* time taken to flip page back */
+    transition: transform 6s; /* time taken to close page */
     z-index: 10; /* making sure cover is on top of everything */
+    animation: closeCover 1ms 1s both;
+}
+@keyframes closeCover {
+    0% {
+        z-index: 0;
+    }
+    50% {
+        z-index: 0;
+    }
+    100% {
+        z-index: 10;
+    }
+}
+@-webkit-keyframes closeCover {
+    0% {
+        z-index: 0;
+    }
+    50% {
+        z-index: 0;
+    }
+    100% {
+        z-index: 10;
+    }
+}
+@-moz-keyframes closeCover {
+    0% {
+        z-index: 0;
+    }
+    50% {
+        z-index: 0;
+    }
+    100% {
+        z-index: 10;
+    }
+}
+@-o-keyframes closeCover {
+    0% {
+        z-index: 0;
+    }
+    50% {
+        z-index: 0;
+    }
+    100% {
+        z-index: 10;
+    }
 }
 .book:hover .cover {
-    transform: rotateX(10deg) rotateY(-180deg); /* flip page */
-    animation: cover 1ms 1s both; /* change the z-index in the middle
+    transform: rotateX(10deg) rotateY(-180deg); /* open page */
+    transition: transform 6s; /* time taken to open page */
+    animation: openCover 3s 3s both; /* change the z-index in the middle
      of the flip transition, to make the cover fall underneath the pages */
 }
+
+
 /* animation for cover */
-@keyframes cover {
+@keyframes openCover {
     0% {
         z-index: 10;
     }
@@ -51,7 +99,7 @@ body {
         z-index: 0;
     }
 }
-@-webkit-keyframes cover {
+@-webkit-keyframes openCover {
     0% {
         z-index: 10;
     }
@@ -62,7 +110,7 @@ body {
         z-index: 0;
     }
 }
-@-o-keyframes cover {
+@-moz-keyframes openCover {
     0% {
         z-index: 10;
     }
@@ -73,12 +121,12 @@ body {
         z-index: 0;
     }
 }
-@-moz-keyframes cover {
+@-o-keyframes openCover {
     0% {
         z-index: 10;
     }
     50% {
-        z-index: 0;
+        z-index: 10;
     }
     100% {
         z-index: 0;
@@ -87,6 +135,8 @@ body {
 .back-cover {
     z-index: -3; /* move the back cover behind everything else */
 }
+
+
 /* Pages */
 .page ,
 .last-page {
@@ -104,19 +154,69 @@ body {
 .last-page {
     z-index: -1;
 }
+
+
 /* Page transitions */
+
+
 /* First page: */
 .page:nth-child(2) {
-    background: yellow;
-    transition: transform 3s ; /* page close duration */
     z-index: 6;
+    background: yellow;
+    transition: transform 5.6s ; /* page close duration */
+    animation: closeFirstPage 1ms 1s both;
+}
+/* first page close animation */
+@keyframes closeFirstPage {
+    0% {
+        z-index: 1;
+    }
+    50% {
+        z-index: 1;
+    }
+    100% {
+        z-index: 6;
+    }
+}
+@-webkit-keyframes closeFirstPage {
+    0% {
+        z-index: 1;
+    }
+    50% {
+        z-index: 1;
+    }
+    100% {
+        z-index: 6;
+    }
+}
+@-moz-keyframes closeFirstPage {
+    0% {
+        z-index: 1;
+    }
+    50% {
+        z-index: 1;
+    }
+    100% {
+        z-index: 6;
+    }
+}
+@-o-keyframes closeFirstPage {
+    0% {
+        z-index: 1;
+    }
+    50% {
+        z-index: 1;
+    }
+    100% {
+        z-index: 6;
+    }
 }
 .book:hover .page:nth-child(2){
-    animation: first 1ms 1.2s both; /* change z-index in the middle of flip transition */
-    transition: transform 3s 0.2s; /* page open duration */
+    transition: transform 6s 0.2s; /* page open duration */
+    animation: openFirstPage 3s 3.2s both; /* change z-index in the middle of flip transition */
 }
-/* first page animation */
-@keyframes first {
+/* first page open animation */
+@keyframes openFirstPage {
     0% {
         z-index: 6;
     }
@@ -127,50 +227,99 @@ body {
         z-index: 1;
     }
 }
-@-webkit-keyframes first {
+@-webkit-keyframes openFirstPage {
     0% {
         z-index: 6;
     }
     50% {
-        z-index: 1;
+        z-index: 6;
     }
     100% {
         z-index: 1;
     }
 }
-@-o-keyframes first {
+@-o-keyframes openFirstPage {
     0% {
         z-index: 6;
     }
     50% {
-        z-index: 1;
+        z-index: 6;
     }
     100% {
         z-index: 1;
     }
 }
-@-moz-keyframes first {
+@-moz-keyframes openFirstPage {
     0% {
         z-index: 6;
     }
     50% {
-        z-index: 1;
+        z-index: 6;
     }
     100% {
         z-index: 1;
     }
 }
+
+
 /* Second page: */
 .page:nth-child(3) {
-    background: orange;
-    transition: transform 2.6s; /* page close duration */
     z-index: 5;
+    background: orange;
+    transition: transform 5.2s; /* page close duration */
+    animation: closeSecondPage 1ms 1s both;
+}
+/* close animation */
+@keyframes closeSecondPage {
+    0% {
+        z-index: 2;
+    }
+    50% {
+        z-index: 2;
+    }
+    100% {
+        z-index: 5;
+    }
+}
+@-webkit-keyframes closeSecondPage {
+    0% {
+        z-index: 2;
+    }
+    50% {
+        z-index: 2;
+    }
+    100% {
+        z-index: 5;
+    }
+}
+@-moz-keyframes closeSecondPage {
+    0% {
+        z-index: 2;
+    }
+    50% {
+        z-index: 2;
+    }
+    100% {
+        z-index: 5;
+    }
+}
+@-o-keyframes closeSecondPage {
+    0% {
+        z-index: 2;
+    }
+    50% {
+        z-index: 2;
+    }
+    100% {
+        z-index: 5;
+    }
 }
 .book:hover .page:nth-child(3){
-    animation: second 1ms 1.4s both; /* change z-index in the middle of flip transition */
-    transition: transform 3s 0.4s; /* page open duration */
+    transition: transform 6s 0.4s; /* page open duration */
+    animation: openSecondPage 6s 1.4s both; /* change z-index in the middle of flip transition */
 }
-@keyframes second {
+/* open animation */
+@keyframes openSecondPage {
     0% {
         z-index: 5;
     }
@@ -181,7 +330,7 @@ body {
         z-index: 2;
     }
 }
-@-webkit-keyframes second {
+@-webkit-keyframes openSecondPage {
     0% {
         z-index: 5;
     }
@@ -192,7 +341,7 @@ body {
         z-index: 2;
     }
 }
-@-o-keyframes second {
+@-o-keyframes openSecondPage {
     0% {
         z-index: 5;
     }
@@ -203,7 +352,7 @@ body {
         z-index: 2;
     }
 }
-@-moz-keyframes second {
+@-moz-keyframes openSecondPage {
     0% {
         z-index: 5;
     }
@@ -214,17 +363,66 @@ body {
         z-index: 2;
     }
 }
+
+
 /* Third page: */
 .page:nth-child(4) {
-    background: red;
-    transition: transform 2.2s; /* page close duration */
     z-index: 4;
+    background: red;
+    transition: transform 4.8s; /* page close duration */
+    animation: closeThirdPage 1ms 1s both ;
+}
+/* close animation */
+@keyframes closeThirdPage {
+    0% {
+        z-index: 3;
+    }
+    50% {
+        z-index: 3;
+    }
+    100% {
+        z-index: 4;
+    }
+}
+@-webkit-keyframes closeThirdPage {
+    0% {
+        z-index: 3;
+    }
+    50% {
+        z-index: 3;
+    }
+    100% {
+        z-index: 4;
+    }
+}
+@-moz-keyframes closeThirdPage {
+    0% {
+        z-index: 3;
+    }
+    50% {
+        z-index: 3;
+    }
+    100% {
+        z-index: 4;
+    }
+}
+@-o-keyframes closeThirdPage {
+    0% {
+        z-index: 3;
+    }
+    50% {
+        z-index: 3;
+    }
+    100% {
+        z-index: 4;
+    }
 }
 .book:hover .page:nth-child(4){
-    animation: third 1ms 1.6s both; /* change z-index in the middle of flip transition */
-    transition: transform 3s 0.6s; /* page open duration */
+    transition: transform 6s 0.6s; /* page open duration */
+    animation: openThirdPage 6s 1.6s both; /* change z-index in the middle of flip transition */
 }
-@keyframes third {
+/* open animation */
+@keyframes openThirdPage {
     0% {
         z-index: 4;
     }
@@ -235,7 +433,7 @@ body {
         z-index: 3;
     }
 }
-@-webkit-keyframes third {
+@-webkit-keyframes openThirdPage {
     0% {
         z-index: 4;
     }
@@ -246,7 +444,7 @@ body {
         z-index: 3;
     }
 }
-@-o-keyframes third {
+@-o-keyframes openThirdPage {
     0% {
         z-index: 4;
     }
@@ -257,7 +455,7 @@ body {
         z-index: 3;
     }
 }
-@-moz-keyframes third {
+@-moz-keyframes openThirdPage {
     0% {
         z-index: 4;
     }
@@ -268,17 +466,66 @@ body {
         z-index: 3;
     }
 }
+
+
 /* Fourth page: */
 .page:nth-child(5) {
-    background: purple;
-    transition:transform 1.8s; /* page close duration */
     z-index: 3;
+    background: purple;
+    transition:transform 4.4s; /* page close duration */
+    animation: closeFourthPage 1ms 1s both;
+}
+/* close animation */
+@keyframes closeFourthPage {
+    0% {
+        z-index: 4;
+    }
+    50% {
+        z-index: 4;
+    }
+    100% {
+        z-index: 3;
+    }
+}
+@-webkit-keyframes closeFourthPage {
+    0% {
+        z-index: 4;
+    }
+    50% {
+        z-index: 4;
+    }
+    100% {
+        z-index: 3;
+    }
+}
+@-moz-keyframes closeFourthPage {
+    0% {
+        z-index: 4;
+    }
+    50% {
+        z-index: 4;
+    }
+    100% {
+        z-index: 3;
+    }
+}
+@-o-keyframes closeFourthPage {
+    0% {
+        z-index: 4;
+    }
+    50% {
+        z-index: 4;
+    }
+    100% {
+        z-index: 3;
+    }
 }
 .book:hover .page:nth-child(5){
-    animation: fourth 1ms 1.8s both; /* change z-index in the middle of flip transition */
-    transition: transform 3s 0.8s; /* page open duration */
+    transition: transform 6s 0.8s; /* page open duration */
+    animation: openFourthPage 6s 1.8s both; /* change z-index in the middle of flip transition */
 }
-@keyframes fourth {
+/* open animation */
+@keyframes openFourthPage {
     0% {
         z-index: 3;
     }
@@ -289,7 +536,7 @@ body {
         z-index: 4;
     }
 }
-@-webkit-keyframes fourth {
+@-webkit-keyframes openFourthPage {
     0% {
         z-index: 3;
     }
@@ -300,7 +547,7 @@ body {
         z-index: 4;
     }
 }
-@-o-keyframes fourth {
+@-o-keyframes openFourthPage {
     0% {
         z-index: 3;
     }
@@ -311,7 +558,7 @@ body {
         z-index: 4;
     }
 }
-@-moz-keyframes fourth {
+@-moz-keyframes openFourthPage {
     0% {
         z-index: 3;
     }
@@ -322,17 +569,66 @@ body {
         z-index: 4;
     }
 }
+
+
 /* Fifth page: */
 .page:nth-child(6) {
-    background: blue;
-    transition: transform 1.4s; /* page close duration */
     z-index: 2;
+    background: blue;
+    transition: transform 4s; /* page close duration */
+    animation: closeFifthPage 1ms 1s both;
+}
+/* close animation */
+@keyframes closeFifthPage {
+    0% {
+        z-index: 5;
+    }
+    50% {
+        z-index: 5;
+    }
+    100% {
+        z-index: 2;
+    }
+}
+@-webkit-keyframes closeFifthPage {
+    0% {
+        z-index: 5;
+    }
+    50% {
+        z-index: 5;
+    }
+    100% {
+        z-index: 2;
+    }
+}
+@-moz-keyframes closeFifthPage {
+    0% {
+        z-index: 5;
+    }
+    50% {
+        z-index: 5;
+    }
+    100% {
+        z-index: 2;
+    }
+}
+@-o-keyframes closeFifthPage {
+    0% {
+        z-index: 5;
+    }
+    50% {
+        z-index: 5;
+    }
+    100% {
+        z-index: 2;
+    }
 }
 .book:hover .page:nth-child(6){
-    animation: fifth 1ms 1.8s both; /* change z-index in the middle of flip transition */
-    transition: transform 3s 1s; /* page open duration */
+    transition: transform 6s 1s; /* page open duration */
+    animation: openFifthPage 6s 1.8s both; /* change z-index in the middle of flip transition */
 }
-@keyframes fifth {
+/* open animation */
+@keyframes openFifthPage {
     0% {
         z-index: 1;
     }
@@ -343,7 +639,7 @@ body {
         z-index: 6;
     }
 }
-@-webkit-keyframes fifth {
+@-webkit-keyframes openFifthPage {
     0% {
         z-index: 1;
     }
@@ -354,7 +650,7 @@ body {
         z-index: 6;
     }
 }
-@-o-keyframes fifth {
+@-o-keyframes openFifthPage {
     0% {
         z-index: 1;
     }
@@ -365,7 +661,7 @@ body {
         z-index: 6;
     }
 }
-@-moz-keyframes fifth {
+@-moz-keyframes openFifthPage {
     0% {
         z-index: 1;
     }
